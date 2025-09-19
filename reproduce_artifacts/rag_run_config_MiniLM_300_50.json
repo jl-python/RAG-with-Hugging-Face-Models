@@ -1,0 +1,7 @@
+{
+  "chunk_size": 300,
+  "chunk_overlap": 50,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "llm": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "retriever_k": 4
+}
