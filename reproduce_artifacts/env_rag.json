@@ -1,0 +1,11 @@
+{
+  "python": "3.12.11",
+  "langchain": "0.3.27",
+  "platform": "Linux-6.1.123+-x86_64-with-glibc2.35",
+  "torch": "2.8.0+cu126",
+  "cuda": false,
+  "device": "CPU",
+  "transformers": "4.56.1",
+  "sentence_transformers": "5.1.0",
+  "chromadb": "1.1.0"
+}
