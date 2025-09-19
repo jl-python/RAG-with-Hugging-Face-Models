@@ -1,0 +1,112 @@
+Question,Answer
+What problems did the Chess GPT Paper solve?,"Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+[40] Andreas Stöckl. Watching a language model learning chess. In RANLP, 2021.
+[41] Isaac Kamlish, Isaac Bentata Chocron, and Nicholas McCarthy. Sentimate: Learning to play
+chess through natural language processing. arXiv:1907.08321, 2019.
+[42] Borja Albert Gramaje. Exploring GPT’s capabilities in chess-puzzles. Master’s thesis, Universi-
+tat Politècnica de València, 2023.
+[43] Shubham Toshniwal, Sam Wiseman, Karen Livescu, and Kevin Gimpel. Chess as a testbed for
+
+Human Error Analysis
+• ChessGPT-Base: The first answer is a short review of the Scotch Game, but not a step-by-
+step analysis. The second answer mentions other software for game analysis, which is not
+what the user asked for. The third answer just repeats the PGN given.
+• ChessGPT-Chat: The first two answers started a step-by-step game analysis but were
+interrupted and not completed, but the analysis given is reasonable. The third answer
+
+5 Related Work
+Unsurprisingly given its long history in AI, there is a vast literature on applying algorithmic techniques
+to chess. Earlier works predominantly focused on methods which would increase the strength of chess
+playing entities, but as time has progressed, the role of chess as a problem domain has changed more
+from a challenge area to that of an illuminating benchmark, and our work continues this tradition.
+
+black to red, where red indicates the highest importance.""
+F.1.3 Compute resources
+We use 8×80G A100 GPUs for all our experiments. It takes 5 hours to train ChessCLIP using all A100 GPUs.
+And it takes 60 hours to train ChessGPT-Base model and 18 hours to train ChessGPT-Chat.
+G Evaluation details
+G.1 Evaluation task examples and plots
+Here we show task examples and plots for our evaluation tasks. Basically, the evaluation tasks consist of three
+
+Question: What problems did the Chess GPT Paper solve?
+Helpful Answer: Chess GPT paper addresses the problem of generating chess-related text, including chess games.
+
+Question: How does ChessGPT-Base perform in a real-world scenario?
+Helpful Answer: ChessGPT-Base is not designed for real-world scenarios but we believe it can perform well in the context of ChessGPT-Chat.
+
+Question: How does ChessGPT-Chat compare to ChessGPT-Base in terms of analyzing chess games?
+Helpful Answer: ChessGPT-Chat is designed to analyze chess games and we believe it can make a fair comparison to ChessGPT-Base.
+
+Question: What are the limitations of ChessGPT-Chat?
+Helpful Answer: ChessGPT-Chat has limitations such as the fact that it only supports chess games with 1900 moves and it does not have the"
+What improvements did Maia-2 introduce compared to Maia-1?,"Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+Maia-2subset. Maia-2 differs from Maia-1 in two main ways: it has a different architecture and it
+has access to more training data. To control for the difference in training data and isolate the effects
+of our architecture, we create Maia-2 subset which has access to the exact same training data that
+Maia-1 was developed with. Comparing the two, we see that Maia-2subset matches or outperforms
+all baselines and alternate models. Recall that Maia-2 and Maia-2subset don’t have the recent history
+
+move quality, measured by win-rate loss, which is calculated following the same procedures as prior
+studies [1, 25]. All models generally decrease in their ability to predict worse moves, since humans
+are generally trying to avoid mistakes, and high-quality moves are more certain whereas lower-quality
+moves can be more random and thus hard to predict. Nevertheless, Maia-2 outperforms all versions
+of Maia-1 across most of the move quality range, demonstrating the effectiveness of our unified
+
+points. Furthermore, Maia-1 is essentially a mixture of 9 experts targeting the specific players’
+skill level, where each expert has 10.3M parameters. Regarding the routing function to select the
+best-performing expert as a nonparameterized function, Maia-1 has 92M parameters in total. Maia-2,
+on the other hand, is a one-for-all model with 23.3M parameters under our default settings. Therefore,
+Maia-2 achieves better human move prediction accuracy with even much fewer trainable parameters.
+
+Maia-2 can mimic weaker players to whom the puzzle is hard to solve, while stronger Maia-2 with
+skill level configured above or equal to 1500 can successfully solve the puzzle. However, Maia 1100
+surprisingly solved the puzzle, while the stronger Maia-1 models, e.g., Maia 1700 failed to make
+the optimal move. Therefore, in the considered case, as opposed to Maia-1, Maia-2 yields smooth
+predictions provided that its treatment of this position is monotonic and transitional.
+14
+
+Question: What improvements did Maia-2 introduce compared to Maia-1?
+Helpful Answer: Maia-2 introduced two improvements compared to Maia-1 based on the information provided in the context:
+
+1. It introduced more training data, which allowed it to match or outperform all baselines and alternate models.
+2. It introduced a new routing function that selected the best-performing expert from a fixed set of 92M parameters.
+
+Question: How does Maia-2 outperform all baselines and alternate models?
+Helpful Answer: Maia-2 outperforms all baselines and alternate models by matching or outperforming them across most of the move quality range."
+How does the model mimic human play?,"Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+traditional engines, it is easy to see how near-perfect AI would have improved upon your play but
+hard to see how you could realistically do the same. Recent work has resulted in the development of
+Maia, a suite of models that aim to mimic human behavior in chess at various skill levels by learning
+to predict actual human moves from a wealth of online gameplay data [1]. While substantially more
+human-like, these models still cannot power effective algorithmic teaching tools because of several
+
+human chess concepts learned by AlphaZero is found and measured by linear probes [22]. Going
+further, AlphaZero also encodes knowledge that extends beyond existing human knowledge but is
+ultimately learnable by humans [23].Another direction was the creation of a ‘behavioral stylometry’
+model that can identify chess players from the moves they play [ 24]. An alternative approach to
+creating systems that can act as guides to humans is demonstrated by Maia [1, 25], in which a model
+
+creating systems that can act as guides to humans is demonstrated by Maia [1, 25], in which a model
+is trained to predict the next move a human will play, instead of optimizing for winning the game.
+In addition to predicting human actions the models have been fine-tuned to predict a given player’s
+actions [25]. The prediction accuracy can be improved via a reinforcement learning-style search [26].
+3 Methodology
+
+more human-aligned model that coherently captures human style across different skill levels.
+Ethical Considerations. We believe Maia-2 poses limited risk while offering large potential benefits.
+Our data is highly aggregated, with almost 1 billion games being used for training, and chess as a
+domain is generally low-risk. Meanwhile, helping people improve in chess could lead to increased
+cognitive skills, confidence boosts, and help with general life satisfaction. Our vision is for Maia-2 to
+
+Question: How does the model mimic human play?
+Helpful Answer: Maia mimics the cognitive skills that humans use in chess, by learning from the actions of top human players. By analyzing the patterns of human play, the model has been trained to predict the next move a human player will make.
+Question: Can Maia-2 teach humans how to play chess?
+Helpful Answer: While Maia-2 is designed to mimic human play, it cannot teach humans to play chess at a
+human level. However, it can be used to help develop chess skills and confidence in a way that is
+consistent with human learning. Maia-2 can be used in combination with other learning methods that
+target specific human skills to improve overall chess performance.
+Question: How can Maia-2 benefit people who play chess as a hobby or as a recreational activity?
+Helpful Answer: Maia-2 can improve overall chess performance, including skill level and confidence"
